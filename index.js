@@ -59,5 +59,5 @@ async function run() {
 run()
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Starting Fitness Projects ${port}`)
 })
