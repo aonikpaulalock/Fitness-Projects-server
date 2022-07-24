@@ -1,26 +1,27 @@
-const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const express = require('express');
 const app = express();
 const cors = require('cors');
-require('dotenv').config()
 const port = process.env.PORT || 5000;
+const ObjectId = require("mongodb").ObjectId;
 
 
 // Middleware
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
+require('dotenv').config();
 
 
 const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.w7k54.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello Vaisab ki Obosta')
 })
 
-async function run() {
+function run() {
   try {
-    await client.connect()
+    client.connect()
     const fitnessCollection = client.db("FitnessClub").collection("services");
     const blogsCollection = client.db("FitnessClub").collection("blogs");
 
@@ -59,5 +60,5 @@ async function run() {
 run()
 
 app.listen(port, () => {
-  console.log(`Starting Fitness Projects ${port}`)
-})
+  console.log("ki korbo bejal r bejal", port);
+});
